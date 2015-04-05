@@ -22,6 +22,7 @@ public class MainActivity extends ActionBarActivity {
     String[] names = { "Иван", "Марья", "Петр", "Антон", "Даша", "Борис",
             "Костя", "Игорь", "Анна", "Денис", "Андрей" };
     ArrayList<Technology> technologiesArrayList = new ArrayList<Technology>();
+    TechAdapter techAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +30,17 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         String technologies = getIntent().getStringExtra("technologies");
+        techAdapter = new TechAdapter(this, technologiesArrayList);
 
-        JSONObject techsObjects = new JSONObject();
+        ListView lvMain = (ListView) findViewById(R.id.list_view);
+        lvMain.setAdapter(techAdapter);
+
+        JSONObject techsObjects;
         try {
-            techsObjects = new JSONObject(technologies);
-            Iterator<String> techsIter = techsObjects.getJSONObject("technology").keys();
-            Technology newTechnology;
+            techsObjects = (new JSONObject(technologies)).getJSONObject("technology");
             JSONObject technology;
             String info;
-            for(Iterator iterator = techsObjects.getJSONObject("technology").keys(); iterator.hasNext();) {
+            for(Iterator iterator = techsObjects.keys(); iterator.hasNext();) {
                 technology = ((JSONObject)techsObjects.get((String) iterator.next()));
                 info = null;
                 try {
@@ -48,7 +51,6 @@ public class MainActivity extends ActionBarActivity {
                 if (info != null) {
                     technologiesArrayList.add(new Technology(technology.getString("title"), technology.getString("picture"), info));
                 } else {
-
                     technologiesArrayList.add(new Technology(technology.getString("title"), technology.getString("picture")));
                 }
 
@@ -57,13 +59,7 @@ public class MainActivity extends ActionBarActivity {
             e.printStackTrace();
         }
 
-        ((TextView)findViewById(R.id.technologies)).setText(technologies);
-
-        ListView listView = (ListView) findViewById(R.id.list_item);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_item, names);
-
-        listView.setAdapter(adapter);
+//        ((TextView)findViewById(R.id.technologies)).setText(technologies);
     }
 
 
@@ -88,19 +84,5 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-    class Technology {
-        String title,
-             picture,
-             info;
-        public Technology(String title, String picture, String info){
-            this.title = title;
-            this.picture = picture;
-            this.info = info;
-        }
-        public Technology(String title, String picture){
-            this.title = title;
-            this.picture = picture;
-        }
     }
 }

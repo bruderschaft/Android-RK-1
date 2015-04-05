@@ -1,12 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/textView1"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center_horizontal"
-    android:padding="5dp"
-    android:text="TextView"
-    android:textColor="#00FF00"
-    android:textSize="24sp">
-</TextView>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context=".MainActivity"
+
+    android:id="@+id/fullscreen_content"
+    >
+    <ImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_launcher"
+        android:id="@+id/techImage"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/techImage"
+        android:orientation="vertical"
+        >
+        <TextView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/techTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingTop="5dp"
+            android:text=""
+            android:textStyle="bold"
+            android:textSize="15sp"
+            >
+        </TextView>
+        <TextView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/techInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingBottom="5dp"
+            android:text="asd"
+            android:textSize="11sp"
+            >
+        </TextView>
+    </LinearLayout>
+
+</RelativeLayout>

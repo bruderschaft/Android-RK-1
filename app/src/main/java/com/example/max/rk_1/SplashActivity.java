@@ -63,11 +63,6 @@ public class SplashActivity extends Activity {
                 e.printStackTrace();
             }
             return technologies;
-//            try {
-//                TimeUnit.SECONDS.sleep(2);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
         }
 
 
