@@ -23,7 +23,6 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:paddingTop="5dp"
-            android:text=""
             android:textStyle="bold"
             android:textSize="15sp"
             >
@@ -33,9 +32,10 @@
             android:id="@+id/techInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
+            android:gravity="left"
             android:paddingBottom="5dp"
-            android:text="asd"
+            android:paddingLeft="5dp"
+            android:layout_gravity="start"
             android:textSize="11sp"
             >
         </TextView>
